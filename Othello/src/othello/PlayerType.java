@@ -1,9 +1,11 @@
-
+/**
+ * 
+ */
 package othello;
 
 /**
  *
- * @author Archeress
+ * @author Shawn "Todd" Ervin
  */
 public enum PlayerType {
     OPPONENT(-1), ME(1);
@@ -16,5 +18,6 @@ public enum PlayerType {
          */
         int getValue(){
             return value;
-        }   
+        }
 }//PlayerType
+

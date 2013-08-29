@@ -1,18 +1,21 @@
-
 package othello;
 
 /**
  *
- * @author Archeress
+ * @author Shawn "Todd" Ervin
  */
 public enum PieceColor {
+
     BLACK('B'), WHITE('W'), EMPTY('-'), BORDER('*');
     private char value;
-    PieceColor(char initValue){
+
+    PieceColor(char initValue) {
         value = initValue;
     }//constructor
+
     @Override
-    public String toString(){
+    public String toString() {
         return value + "";
     }
 }//PieceColor
+

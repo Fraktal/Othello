@@ -17,8 +17,19 @@ public class Board {
 
     }//constructor
 
-    /**
-     * color will passed to me then initialize the board
+    /**  
+     *final int EMPTY = 0;
+     *final int OFFBOARD = -1;
+     * 
+     *final static int Board[][] = new int[10][10]; 
+     *for (int i=0; i<10; i++)      
+         {
+            Board[i][0] = OFFBOARD;
+            Board[i][9] = OFFBOARD;
+            Board[0][i] = OFFBOARD;
+            Board[9][i] = OFFBOARD;
+         } 
+     *    
      * initialize the board by color in the center at start positions
      * using 1 and -1
      * will be only called during the game

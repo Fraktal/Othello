@@ -27,7 +27,7 @@ public class Othello {
     /* Initializes game variables (including board) based in the initialization string
      * @param initStr -- Initial string with values "I B" or "I W"
      *                   "I B" -- Initialize game with agent playing as Black
-     *                   "I W" -- Initialize game with agent playeing as White
+     *                   "I W" -- Initialize game with agent playing as White
      */
     Othello(String initStr) {
         if (initStr.charAt(2) == 'B') {

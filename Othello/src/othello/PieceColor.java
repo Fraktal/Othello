@@ -1,7 +1,6 @@
 package othello;
 
 /**
- *
  * @author Shawn "Todd" Ervin
  */
 public enum PieceColor {

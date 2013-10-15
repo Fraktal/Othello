@@ -1,0 +1,94 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package othello;
+
+/**
+ *
+ * @author cameron
+ */
+public class Board {
+    static final int maxDim = 100;
+    //static final int maxRow = 10, maxCol = 10;
+    
+    int[] squares;
+    //int[][] squares = {{-2,-2,-2,-2,-2,-2,-2,-2,-2,-2},
+    //                   {-2, 0, 0, 0, 0, 0, 0, 0, 0,-2},
+    //                   {-2, 0, 0, 0, 0, 0, 0, 0, 0,-2},
+    //                   {-2, 0, 0, 0, 0, 0, 0, 0, 0,-2},
+    //                   {-2, 0, 0, 0, 0, 0, 0, 0, 0,-2},
+    //                   {-2, 0, 0, 0, 0, 0, 0, 0, 0,-2},
+    //                   {-2, 0, 0, 0, 0, 0, 0, 0, 0,-2},
+    //                   {-2, 0, 0, 0, 0, 0, 0, 0, 0,-2},
+    //                   {-2, 0, 0, 0, 0, 0, 0, 0, 0,-2},
+    //                   {-2,-2,-2,-2,-2,-2,-2,-2,-2,-2}};
+    
+                                 ;
+    Board(char myColor){
+        squares = new int[maxDim];
+        //squares = new int[maxRow][maxCol];
+        for (int i=0; i<maxDim; i++)
+            if ((i / 10 == 0) || (i/10 == 9)) //top and bottom  row 
+               squares[i] = Othello.BORDER;
+            else if ((i % 10 == 0) || (i%10 == 9)) //left and right columns
+               squares[i] = Othello.BORDER;     
+            else                   
+               squares[i] = Othello.EMPTY;
+        if (myColor == 'B'){
+            squares[44] = Othello.OPPONENT;
+            squares[45] = Othello.ME;
+            squares[54] = Othello.ME;
+            squares[55] = Othello.OPPONENT;
+        }    
+        
+            
+    }
+    double evaluate(int player){
+        return 0.0;
+    }
+    
+    Move getMyMove() {
+        double alpha = -64000.00;  //your min for evaluation function
+        double beta  = -64000.00;  //your max for evaluation function
+        for (int maxDepth = 2; (maxDepth <= 20) && !timeUp; maxDepth += 2)
+             Move myMove.alphabeta(0, Othello.ME, alpha, beta, maxDepth);
+    }
+
+    Move alphabeta (int ply, int player, double alpha, double beta, int maxDepth) {
+	//ply ==> current level in tree
+        //player ==> player making the move at that level in the tree
+        //alpha  ==> lowest value that player will accept
+        //beta   ==> highest value that opposing player will accept 
+        //maxDepth ==> maxDepth for tree
+
+        if (ply >= maxDepth) {
+	    return new Move(0 ,evaluate(player));
+        } //if leaf node  
+        else {
+            SortedSet<Move> moveList = generateMoves(player);
+            if (moveList.size() == 0)
+		moveList.add(new Move()); //add a passmove to list
+            Move bestMove = moveList.get(i);
+            for (int i=0; i<moveList.size(); i++){//for each move
+                Move currentMove = moveList.get(i);
+                Board newBoard = new Board(this);
+                newBoard.applyMove(player, Move);
+                Move tempMove  = newBoard.alphabeta(ply+1, -player, -beta, -alpha,
+                                                  maxDepth);
+                currentMove.value = -tempMove.value;
+                if (value > alpha){                   
+                    alpha = value;
+                    bestMove = currentMove;
+                    if (alpha > beta)
+                        return bestMove;
+                    if (ply == 0)
+			bestMove = currentMove;
+                }
+                          
+            }
+            return Move;  
+        }//if internal node of game tree
+      
+    }
+}

@@ -3,8 +3,8 @@ package othello;
 /**
  * Print utility methods for Othello Application.
  * For all output use these methods only!!!
+ *
  * @author Shawn "Todd" Ervin
- * 
  */
 public class OthelloOut {
 
@@ -20,4 +20,5 @@ public class OthelloOut {
         System.out.printf("R %s\n", color);
     }//printReady    
 }//OthelloOut
+
 

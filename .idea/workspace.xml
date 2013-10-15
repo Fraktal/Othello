@@ -31,6 +31,7 @@
     <file path="$USER_HOME$/greeter/practice.sc" changelist="0f105b2f-1add-4230-ae4e-f087e2376b2c" time="1381517614096" ignored="false" />
     <file path="$USER_HOME$/greeter/src/hello.scala" changelist="0f105b2f-1add-4230-ae4e-f087e2376b2c" time="1381517859194" ignored="false" />
     <file path="$USER_HOME$/greeter/project/hello.scala" changelist="0f105b2f-1add-4230-ae4e-f087e2376b2c" time="1381521661015" ignored="false" />
+    <file path="/.gitignore" changelist="0f105b2f-1add-4230-ae4e-f087e2376b2c" time="1381853887058" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,13 +92,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Board.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Board.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Othello/src/othello/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="164" column="46" selection-start="4933" selection-end="4933" vertical-scroll-proportion="0.1763727">
+            <state line="164" column="46" selection-start="4933" selection-end="4933" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#4414#4420#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="6" selection-start="9" selection-end="9" vertical-scroll-proportion="0.024958402">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -163,6 +173,7 @@
         <option value="$PROJECT_DIR$/Othello/src/othello/Othello.java" />
         <option value="$PROJECT_DIR$/Othello/src/othello/Move.java" />
         <option value="$PROJECT_DIR$/Othello/src/othello/Board.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -482,15 +493,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Othello/src/othello/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#4414#4420#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Othello/src/othello/Move.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="13" selection-start="123" selection-end="123" vertical-scroll-proportion="0.0">
@@ -583,10 +585,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Othello/src/othello/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="164" column="46" selection-start="4933" selection-end="4933" vertical-scroll-proportion="0.1763727">
+        <state line="164" column="46" selection-start="4933" selection-end="4933" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#4414#4420#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="6" selection-start="9" selection-end="9" vertical-scroll-proportion="0.024958402">
+          <folding />
         </state>
       </provider>
     </entry>

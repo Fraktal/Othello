@@ -3,6 +3,8 @@ package othello;
 import sun.org.mozilla.javascript.ast.WhileLoop;
 
 import java.util.ArrayList;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import static othello.PlayerType.*;
 
@@ -121,35 +123,58 @@ public class Board {
 
     } //generateMoves
 
-    /**
-     * // Create the sorted set
-     * SortedSet set = new TreeSet();
-     * <p/>
-     * // Add elements to the set
-     * set.add("b");
-     * set.add("c");
-     * set.add("a");
-     * <p/>
-     * // Iterating over the elements in the set
-     * Iterator it = set.iterator();
-     * while (it.hasNext()) {
-     * // Get element
-     * Object element = it.next();
-     * }
-     * // The elements are iterated in order: a, b, c
-     * <p/>
-     * // Create an array containing the elements in a set (in this case a String array).
-     * // The elements in the array are in order.
-     * String[] array = (String[])set.toArray(new String[set.size()]);
-     * <p/>
-     * <p/>
-     * returns a list of all legal moves. use sorted set. Must return
-     * a list of moves like Cameron's game. pass player as a parameter. return ONLY
-     * LEGAL moves.
-     *
-     * @param player -- player for whom to apply move
-     * @param amove  -- move to apply to board
-     */
+    public int evaluate(int player, int ply) {
+        //check for endgame
+        SortedSet<Move> myMoves = this.generateMoves(ME.isMove == true);
+        SortedSet<Move> oppMoves = this.generateMoves(OPPONENT.isMove == true);
+        int pieceCount = 0;
+
+        for (int r = 1; r <= 8; r++) {
+            for (int c = 1; c <= 8; c++) {
+                if (board[r][c] != BORDER.getValue())
+                    pieceCount += board[r][c];
+            }
+
+            if (myMoves.isEmpty() && oppMoves.isEmpty())
+                return pieceCount * 100000;
+        }
+        return pieceCount;
+    }
+
+    public SortedSet<Move> bestMove(int move_number, SortedSet<Move> treeMoves) {
+
+        return treeMoves;
+    }
+
+
+    public SortedSet<Move> alphabeta(Board plyboard, int ply, int player,
+                                     int alpha, int beta, int last_depth
+    ) {
+        SortedSet<Move> returnMoves = new TreeSet<Move>();
+        if (ply == last_depth) {
+            Move move = new Move(0, 0);
+            move.value = plyboard.evaluate(player, ply);
+            returnMoves.add(move);
+        } else {
+            SortedSet<Move> moveList = plyboard.generateMoves(player, true);
+            if (moveList.isEmpty())
+                moveList.add(new Move(0, 0)); //add a pass move to list
+
+            for (Move move : moveList) {
+                Board newBoard = new Board(plyboard);
+                newBoard.applyMove(move, player);
+                SortedSet<Move> tempList = newBoard.alphabeta(newBoard, ply + 1, -player, -beta, -alpha, last_depth);
+                move.value = -tempList.first().value;
+                returnMoves.add(move);
+                if (move.value > alpha)
+                    alpha = move.value;
+                if (alpha > beta)
+                    return returnMoves; //will not return all possible moves on ply zero level
+            }
+        }
+        return returnMoves;
+    }
+
 
     public void applyMove(PlayerType player, Move amove) {
         PlayerType oppPlayer;
@@ -205,5 +230,5 @@ public class Board {
 
     }
 }//Board
-//other methods: implmenting utility methods to help. Feel free to add other
+//other methods: implementing utility methods to help. Feel free to add other
 //methods

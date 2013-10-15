@@ -15,6 +15,7 @@ public class Move implements Comparable<Move> {
     int row;
     int col;
     int[] flip = new int[8];
+    public int value;
 
     Move() {
         row = 0;

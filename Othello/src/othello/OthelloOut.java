@@ -9,7 +9,10 @@ package othello;
 public class OthelloOut {
 
     static public void printMove(PieceColor color, Move amove) {
-        System.out.printf("%s %s\n", color, amove);
+        if (amove.isAPass())
+            System.out.printf("%s\n", color);
+        else
+            System.out.printf("%s %s\n", color, amove);
     }//printMove
 
     static public void printComment(String str) {

@@ -16,7 +16,6 @@ public class Othello {
     Timer timer;
     PlayerType currentPlayer;
     int moveNumber = 0;
-    boolean isMove = false;
     public int timeRemaining;
     public static boolean timeUP;
     static final int MyPieceINDEX = 3;  //index in pieces array
@@ -85,21 +84,15 @@ public class Othello {
     }
 
     boolean myTurn() {
-        if (currentPlayer == PlayerType.ME) {
-            return true;
-        } else {
-            return false;
-        }
+        return currentPlayer == PlayerType.ME;
     }
 
     Move getMyMove() {
-
-        //int timeForMove = (int) (timeAllocation[moveNumber] * (double) timeRemaining);
-
-       // timer.schedule(new InterruptTask(), timeForMove * 1000);
+        int timeForMove = (int) (timeAllocation[moveNumber] * (double) timeRemaining);
+        timer.schedule(new InterruptTask(), timeForMove * 1000);
         SortedSet<Move> moveList = board.alphabeta(board, 0, 1, Integer.MIN_VALUE, Integer.MAX_VALUE, 2);
-        //if (!timeUP) timer.cancel();
-        //timeRemaining -= timeForMove;
+        if (!timeUP) timer.cancel();
+        timeRemaining -= timeForMove;
         return moveList.first();
     }
 
@@ -142,18 +135,7 @@ public class Othello {
 
 
     void announceScore() {
-       /* int myScore = 0;
-        int oppScore = 0;
-        int score;
-        for (int r = 1; r <= 8; r++) {
-            for (int c = 1; c <= 8; c++) {
-                score = Board.board[r][c];
-                if (score == 1) myScore++;
-                else if (score == 3) oppScore++;
-            }
-        }
-        OthelloOut.printComment("My score is  " + myScore);
-        OthelloOut.printComment("Opponent's score is " + oppScore); */
+       board.announceScore();
     }
 }//Othello
 

@@ -112,10 +112,10 @@ public class Board {
         return pieceCount;
     }
 
-
+    /*
     public SortedSet<Move> bestMove(int move_number, SortedSet<Move> treeMoves) {
         return treeMoves;
-    }
+    } */
 
 
     public SortedSet<Move> alphabeta(Board plyboard, int ply, int player,
@@ -127,14 +127,14 @@ public class Board {
             move.value = plyboard.evaluate(player, ply);
             returnMoves.add(move);
         } else {
-            PlayerType currentplayer = null;
+            PlayerType currentplayer;
             if (player >= 1) currentplayer = PlayerType.ME;
             else currentplayer = PlayerType.OPPONENT;
             SortedSet<Move> moveList = plyboard.generateMoves(currentplayer);
             if (moveList.isEmpty()) moveList.add(new Move(0, 0)); //add a pass move to list
 
             for (Move move : moveList) {
-                //if (Othello.timeUP) return returnMoves;//add more checking timeout flag logic
+                if (Othello.timeUP) return returnMoves;//add more checking timeout flag logic
                 Board newBoard = new Board(plyboard);
                 newBoard.applyMove(currentplayer, move);
                 SortedSet<Move> tempList = newBoard.alphabeta(newBoard, ply + 1, -player, -beta, -alpha, last_depth);
@@ -149,9 +149,6 @@ public class Board {
 
 
     public void applyMove(PlayerType player, Move amove) {
-        PlayerType oppPlayer;
-        if (player == PlayerType.ME) oppPlayer = PlayerType.OPPONENT;
-        else oppPlayer = PlayerType.ME;
         if (!amove.isAPass()) {
             board[amove.row][amove.col] = player.getValue();
             for (int d = 0; d < 8; d++) {
@@ -166,6 +163,22 @@ public class Board {
                 }
             }
         }
+    }
+
+    public void announceScore() {
+       int myScore = 0;
+        int oppScore = 0;
+        int score;
+        for (int r = 1; r <= 8; r++) {
+            for (int c = 1; c <= 8; c++) {
+                score = board[r][c];
+                if (score == 1) myScore++;
+                else if (score == 3) oppScore++;
+            }
+        }
+        OthelloOut.printComment("My score is  " + myScore);
+        OthelloOut.printComment("Opponent's score is " + oppScore);
+
     }
 
 

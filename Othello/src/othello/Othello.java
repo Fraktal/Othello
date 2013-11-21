@@ -89,9 +89,9 @@ public class Othello {
 
     Move getMyMove() {
         int timeForMove = (int) (timeAllocation[moveNumber] * (double) timeRemaining);
-        timer.schedule(new InterruptTask(), timeForMove * 1000);
+        //timer.schedule(new InterruptTask(), timeForMove * 1000);
         SortedSet<Move> moveList = board.alphabeta(board, 0, 1, Integer.MIN_VALUE, Integer.MAX_VALUE, 2);
-        if (!timeUP) timer.cancel();
+        //if (!timeUP) timer.cancel();
         timeRemaining -= timeForMove;
         return moveList.first();
     }
@@ -108,7 +108,7 @@ public class Othello {
                 OthelloOut.printComment("Invalid move");
                 return getOpponentMove(keyboard);
             } else {
-                return oppMove;
+                return moveList.tailSet(oppMove).first();
             }
         } else {// not a valid format
             OthelloOut.printComment("You must pass");
